@@ -155,7 +155,7 @@ return [
     |
     */
 
-    'api_redirect' => env('SHOPIFY_API_REDIRECT', '/authenticate'),
+    'api_redirect' => env('SHOPIFY_API_REDIRECT', '/public/authenticate/'),
 
     /*
     |--------------------------------------------------------------------------
@@ -266,7 +266,7 @@ return [
     'webhooks' => [
         [
             'topic' => env('SHOPIFY_WEBHOOK_1_TOPIC', 'app/uninstalled'),
-            'address' => env('SHOPIFY_WEBHOOK_1_ADDRESS', 'https://gyazar.myshopify.com/webhook/app-uninstalled')
+            'address' => env('SHOPIFY_WEBHOOK_1_ADDRESS', 'https://drop.sygnoos.net/webhook/app-uninstalled')
         ],
     ],
 
