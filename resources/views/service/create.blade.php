@@ -52,7 +52,7 @@
 				</ul>
 				<div class="tab-content mb-0 b-0">
 					<div class="tab-pane active" id="first">
-						<form id="generalForm" method="post" action="#" class="form-horizontal">
+						<form id="generalForm" class="form-horizontal" action="{{route('service.shopify')}}" method="POST">
 							<div class="form-group row">
 								<label class="col-sm-2 col-form-label" for="title">Title<span class="text-danger">*</span></label>
 								<div class="col-sm-10">
@@ -134,14 +134,10 @@
 						</form>
 					</div>
 					<div class="tab-pane" id="third">
-						<form id="connectForm" method="post" action="#" class="form-horizontal">
-						</form>
+						<!-- <div class="card-box"> -->
+            <!-- <p>This is placeholder for dashboard</p> -->
+        <!-- </div> -->
 					</div>
-					<!--<div class="form-group mb-0 justify-content-end row">
-						<div class="col-sm-10">
-							<button type="submit" class="btn btn-primary">Add service</button>
-						</div>
-					</div>-->
 				</div>
 				<ul class="list-inline wizard mb-0">
 					<li class="previous list-inline-item disabled"><a href="javascript: void(0);" class="btn btn-secondary btn-previous">Previous</a>

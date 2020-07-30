@@ -11,22 +11,24 @@
 |
 */
 
-//Auth::routes();
-
-//Route::get('/', function () {
-//	return view('auth/login');
-//});
-
+Auth::routes();
 
 Route::get('/', function () {
-	return view('test');
-})->middleware(['auth.shopify'])->name('home');
-//
-//
-//Route::get('/authenticate', 'ServiceController@index')->name('authenticate');
-//Route::group(['middleware' => 'auth'], function () {
-//	Route::get('logout', 'DashboardController@logout');
-//	Route::get('home', 'DashboardController@index');
-//	Route::get('service', 'ServiceController@index');
-//	Route::get('service/create/{serviceId}', 'ServiceController@create');
-//});
+	return view('auth/login');
+});
+
+Route::group(['middleware' => 'auth'], function () {
+	Route::get('logout', 'DashboardController@logout');
+	Route::get('home', 'DashboardController@index');
+	Route::group(['prefix' => 'service'], function () {
+		Route::get('/', 'ServiceController@index');
+		Route::get('create/{serviceId}', 'ServiceController@create');
+		Route::any('search', 'ServiceController@get')->name('service.search');
+		Route::post('shopify', 'ServiceController@shopify')->name('service.shopify');
+	});
+	Route::group(['prefix' => 'shop'], function () {
+		Route::get('add', 'ShopController@addShop')->name('shop.add');
+		Route::post('/make', 'ShopController@makeShop')->name('shop.make');
+		Route::get('/redirect', 'ShopController@redirection');
+	});
+});
