@@ -14,21 +14,21 @@
 Auth::routes();
 
 Route::get('/', function () {
-	return view('auth/login');
+    return "This is landing page\n Login Page <a href='login'>Go</a>";
 });
 
 Route::group(['middleware' => 'auth'], function () {
-	Route::get('logout', 'DashboardController@logout');
-	Route::get('home', 'DashboardController@index');
-	Route::group(['prefix' => 'service'], function () {
-		Route::get('/', 'ServiceController@index');
-		Route::get('create/{serviceId}', 'ServiceController@create');
-		Route::any('search', 'ServiceController@get')->name('service.search');
-		Route::post('shopify', 'ServiceController@shopify')->name('service.shopify');
-	});
-	Route::group(['prefix' => 'shop'], function () {
-		Route::get('add', 'ShopController@addShop')->name('shop.add');
-		Route::post('/make', 'ShopController@makeShop')->name('shop.make');
-		Route::get('/redirect', 'ShopController@redirection');
-	});
+    Route::get('logout', 'DashboardController@logout');
+    Route::get('home', 'DashboardController@index');
+    Route::group(['prefix' => 'service'], function () {
+        Route::get('/', 'ServiceController@index');
+        Route::get('create/{serviceId}', 'ServiceController@create');
+        Route::any('search', 'ServiceController@get')->name('service.search');
+        Route::post('shopify', 'ServiceController@shopify')->name('service.shopify');
+    });
+    Route::group(['prefix' => 'shop'], function () {
+        Route::get('add', 'ShopController@addShop')->name('shop.add');
+        Route::post('/make', 'ShopController@makeShop')->name('shop.make');
+        Route::get('/redirect', 'ShopController@redirect');
+    });
 });
